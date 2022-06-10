@@ -29,65 +29,42 @@
     "node": ">=6.0"
   },
   "scripts": {
-    "prepush": "npm test",
-    "commitmsg": "validate-commit-msg",
     "pretest": "eslint \"lib/**/*.js\" \"test/**/*.js\"",
-    "test": "tap \"test/tap/**/*.js\" --cov",
-    "codecov": "tap 'test/tap/**/*.js' --cov --coverage-report=lcov && codecov"
+    "test": "jest",
+    "prepare": "is-ci || husky install"
   },
   "directories": {
     "test": "test",
     "lib": "lib"
   },
   "dependencies": {
-    "axios": "^0.21.1"
+    "axios": "^0.27.2"
   },
   "devDependencies": {
-    "@log4js-node/sandboxed-module": "^2.2.1",
-    "codecov": "^3.6.1",
-    "conventional-changelog": "^1.1.15",
-    "eslint": "^5.16.0",
-    "eslint-config-airbnb-base": "^13.2.0",
-    "eslint-import-resolver-node": "^0.3.2",
-    "eslint-plugin-import": "^2.18.2",
-    "husky": "^3.0.9",
-    "log4js": "^6.3.0",
-    "nyc": "^14.1.1",
-    "tap": "^16.2.0",
-    "validate-commit-msg": "^2.14.0"
+    "@commitlint/cli": "^17.0.2",
+    "@commitlint/config-conventional": "^17.0.2",
+    "@types/jest": "^28.1.1",
+    "eslint": "^8.17.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-jest": "^26.5.3",
+    "eslint-plugin-prettier": "^4.0.0",
+    "husky": "^8.0.0",
+    "is-ci": "^3.0.1",
+    "jest": "^28.1.1",
+    "log4js": "^6.3.0"
   },
   "browser": {
     "os": false
   },
-  "config": {
-    "validate-commit-msg": {
-      "types": [
-        "feat",
-        "fix",
-        "docs",
-        "style",
-        "refactor",
-        "example",
-        "perf",
-        "test",
-        "chore",
-        "revert",
-        "build"
-      ],
-      "warnOnFail": false,
-      "maxSubjectLength": 72,
-      "subjectPattern": ".+",
-      "subjectPatternErrorMsg": "subject does not match subject pattern!",
-      "helpMessage": "\n# allowed type: feat, fix, docs, style, refactor, example, perf, test, chore, revert\n# subject no more than 50 chars\n# a body line no more than 72 chars"
+  "jest": {
+    "coverageThreshold": {
+      "global": {
+        "branches": 100,
+        "functions": 100,
+        "lines": 100,
+        "statements": 100
+      }
     }
-  },
-  "nyc": {
-    "all": true,
-    "include": [
-      "lib/**/*.js"
-    ],
-    "require": [
-      "./test/sandbox-coverage"
-    ]
   }
 }
