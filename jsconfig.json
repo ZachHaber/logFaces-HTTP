@@ -1,0 +1,12 @@
+{
+  "compilerOptions": {
+    "module": "ESNext",
+    "moduleResolution": "Node",
+    "target": "ES2020",
+    "jsx": "preserve",
+    "strict": true,
+    "checkJs": true
+  },
+  "exclude": ["node_modules", "**/node_modules/*", ".nyc_output"],
+  "include": ["lib/**/*.js"]
+}

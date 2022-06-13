@@ -19,10 +19,12 @@ const fakeAxios = {
     };
   },
 };
-jest.mock('axios', () => fakeAxios);
+/** setup so typescript doesn't complain */
+jest.mock('axios', () => ({ default: fakeAxios }));
 
 function setupLogging(category, enableCallStack, options) {
   const error = jest.spyOn(console, 'error').mockImplementation();
+  /** @type {import('log4js')} */
   let log4js;
   jest.isolateModules(() => {
     log4js = require('log4js');
