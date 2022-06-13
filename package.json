@@ -31,7 +31,8 @@
   "scripts": {
     "pretest": "eslint \"lib/**/*.js\" \"test/**/*.js\"",
     "test": "jest",
-    "prepare": "is-ci || husky install"
+    "prepare": "is-ci || husky install",
+    "codecov": "npm run test && codecov"
   },
   "directories": {
     "test": "test",
@@ -44,6 +45,7 @@
     "@commitlint/cli": "^17.0.2",
     "@commitlint/config-conventional": "^17.0.2",
     "@types/jest": "^28.1.1",
+    "codecov": "^3.8.3",
     "eslint": "^8.17.0",
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-config-prettier": "^8.5.0",
